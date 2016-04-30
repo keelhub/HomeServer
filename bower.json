@@ -1,0 +1,21 @@
+{
+  "name": "homeserver",
+  "description": "",
+  "main": "manage.py",
+  "authors": [
+    "Keelan Fischer"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/keelhub/HomeServer",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.3",
+    "jquery-legacy": "jquery#1.12.3"
+  }
+}
