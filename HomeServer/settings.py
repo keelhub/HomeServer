@@ -126,6 +126,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'static_collected'))
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
+    os.path.join(os.path.dirname(__file__), '..', 'bower_components'),
 ]
 
 
@@ -144,14 +145,14 @@ PIPELINE = {
     'CSSMIN_BINARY': os.path.join(BASE_DIR, 'node_modules/.bin/cssmin'),
     'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
     'UGLIFYJS_BINARY': os.path.join(BASE_DIR, 'node_modules/.bin/uglifyjs'),
-    'JAVASCRIPT': {
-        'main': {
-            'source_filenames': (
-                'js/app.js',
-            ),
-            'output_filename': 'js/app.js',
-        }
-    },
+    # 'JAVASCRIPT': {
+    #     'main': {
+    #         'source_filenames': (
+    #             'js/app.js',
+    #         ),
+    #         'output_filename': 'js/app.js',
+    #     }
+    # },
     'STYLESHEETS': {
         'main': {
             'source_filenames': (

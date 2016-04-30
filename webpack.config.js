@@ -1,10 +1,18 @@
 var path = require('path');
 var webpack = require('webpack');
+var process = require('process');
 
 module.exports = {
     entry: './assets/app.jsx',
-    output: { path: 'static/js', filename: 'app.js' },
+    output: {path: 'static/js', filename: 'app.js'},
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'jshint-loader'
+            }
+        ],
         loaders: [
             {
                 test: /.jsx?$/,
