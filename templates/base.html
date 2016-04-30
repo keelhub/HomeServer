@@ -1,12 +1,18 @@
 {% load pipeline %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static "jquery/dist/jquery.min.js" %}"><\/script>')</script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js"></script>
+    <script>window.React || document.write('<script src="{% static "react/react.min.js" %}"><\/script>')</script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+    <script>window.ReactDOM || document.write('<script src="{% static "react/react-dom.min.js" %}"><\/script>')</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Oh shit! Word?! Shit you care about but probably shouldn't.">
     <meta name="author" content="Oh shit! Word?!">
@@ -20,7 +26,7 @@
 {% block content %}{% endblock %}
 
 <!-- JavaScript scripts -->
-{% javascript 'main' %}
+<script src="{% static 'js/app.js' %}"></script>
 
 </body>
 </html>
