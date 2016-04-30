@@ -1,0 +1,2 @@
+$ ->
+  $('#content').append("Coffeescript works!")
