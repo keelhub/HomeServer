@@ -1,12 +1,16 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 
 module.exports = {
-    entry: './assets/app.jsx',
-    output: {path: 'static/js', filename: 'app.js'},
+    entry: {
+        main: './assets/app.jsx',
+        test: './assets/test.coffee'
+    },
+    output: {
+        path: path.join(__dirname, 'static/js'),
+        filename: '[name].js'
+    },
     module: {
         preLoaders: [
             {

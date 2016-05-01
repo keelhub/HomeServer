@@ -5,8 +5,6 @@ var marked = require('marked');
 
 var Cookies = require('js-cookie');
 
-var coffee = require("./test.coffee");
-
 var csrftoken = Cookies.get('csrftoken');
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
