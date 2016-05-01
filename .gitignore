@@ -15,4 +15,4 @@ tests/report/
 .idea/
 static_collected/
 db.sqlite3
-static/js/app.js
+static/js/
