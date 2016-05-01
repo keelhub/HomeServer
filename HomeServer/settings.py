@@ -130,39 +130,6 @@ STATICFILES_DIRS = [
 ]
 
 
-# Django Pipeline
-# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
-)
-
-PIPELINE = {
-    'CSS_COMPRESSOR': 'pipeline.compressors.cssmin.CSSMinCompressor',
-    'CSSMIN_BINARY': os.path.join(BASE_DIR, 'node_modules/.bin/cssmin'),
-    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
-    'UGLIFYJS_BINARY': os.path.join(BASE_DIR, 'node_modules/.bin/uglifyjs'),
-    # 'JAVASCRIPT': {
-    #     'main': {
-    #         'source_filenames': (
-    #             'js/app.js',
-    #         ),
-    #         'output_filename': 'js/app.js',
-    #     }
-    # },
-    'STYLESHEETS': {
-        'main': {
-            'source_filenames': (
-                'css/style.css',
-            ),
-            'output_filename': 'css/style.css',
-        },
-    }
-}
-
 # Django REST Framework
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

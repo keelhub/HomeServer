@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
-var process = require('process');
+
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
     entry: './assets/app.jsx',
