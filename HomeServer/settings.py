@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'taskman.celery.CeleryConfig',
     'polls.apps.PollsConfig',
     'snippets.apps.SnippetsConfig',
     'comments.apps.CommentsConfig',
@@ -143,3 +144,7 @@ REST_FRAMEWORK = {
 FIXTURE_DIRS = [
     os.path.join(BASE_DIR, "fixtures"),
 ]
+
+
+# Celery
+BROKER_URL = 'redis://localhost:6379/0'
