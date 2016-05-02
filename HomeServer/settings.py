@@ -138,3 +138,8 @@ REST_FRAMEWORK = {
     ]
 }
 
+
+# Fixtures for initial data
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, "fixtures"),
+]
