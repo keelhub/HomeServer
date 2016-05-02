@@ -7,3 +7,4 @@ billiard==3.3.0.23
 celery==3.1.23
 kombu==3.0.35
 redis==2.10.5
+django_debug_toolbar==1.4
