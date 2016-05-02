@@ -16,3 +16,4 @@ tests/report/
 static_collected/
 db.sqlite3
 static/js/
+.vagrant
