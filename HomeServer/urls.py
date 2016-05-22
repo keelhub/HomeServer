@@ -46,8 +46,9 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'),
         name='index'),
     url(r'^admin/', admin.site.urls, name='admin'),
-    url(r'^api/', include(router.urls, namespace='api')),
     url(r'^api/', include('rest_framework.urls')),
+    url(r'^api/', include(router.urls, namespace='api')),
     url(r'^polls/', include('polls.urls'), name='polls'),
     url(r'^api/snippets', include('snippets.urls'), name='snippets'),
+    url(r'^comments/', include('comments.urls', namespace='comments'))
 ]

@@ -2,20 +2,7 @@ var $ = require('jquery');
 var ReactDOM = require('react-dom');
 var React = require('react');
 var marked = require('marked');
-
-var Cookies = require('js-cookie');
-var csrftoken = Cookies.get('csrftoken');
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-    }
-});
+var ajax = require('./ajax.js');
 
 var CommentBox = React.createClass({
     ws: new WebSocket("ws://127.0.0.1:5678/"),

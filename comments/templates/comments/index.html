@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}MySite{% endblock %}
+{% block head %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="content"></div>
+{% endblock %}
+
+<!-- JavaScript scripts -->
