@@ -1,10 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
 
 
 module.exports = {
     entry: {
-        main: './assets/app.jsx',
+        comments: './assets/comments.jsx',
         test: './assets/test.coffee'
     },
     output: {
@@ -12,13 +11,13 @@ module.exports = {
         filename: '[name].js'
     },
     module: {
-        preLoaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'jshint-loader'
-            }
-        ],
+        // preLoaders: [
+        //     {
+        //         test: /\.js$/,
+        //         exclude: /node_modules/,
+        //         loader: 'jshint-loader'
+        //     }
+        // ],
         loaders: [
             {
                 test: /.jsx?$/,
@@ -30,17 +29,17 @@ module.exports = {
             },
             {
                 test: /\.coffee$/,
-                loader: "coffee-loader"
+                loader: 'coffee-loader'
             },
             {
                 test: /\.(coffee\.md|litcoffee)$/,
-                loader: "coffee-loader?literate"
+                loader: 'coffee-loader?literate'
             }
         ]
     },
     externals: {
-        "jquery": "$",
-        "react-dom": "ReactDOM",
-        "react": "React"
+        jquery: '$',
+        'react-dom': 'ReactDOM',
+        react: 'React'
     }
 };
