@@ -107,3 +107,6 @@ bower_components
 # Django
 static/
 db.sqlite3
+
+# SASS
+.sass-cache
