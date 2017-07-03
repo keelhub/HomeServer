@@ -1,45 +1,48 @@
+/**
+ * DEVELOPMENT WEBPACK CONFIGURATION
+ */
+
 const path = require('path');
+const webpack = require('webpack');
 
+// PostCSS plugins
+const cssnext = require('postcss-cssnext');
+const postcssFocus = require('postcss-focus');
+const postcssReporter = require('postcss-reporter');
 
-module.exports = {
+module.exports = require('./webpack.base')({
+    // Add hot reloading in development
     entry: {
-        comments: './assets/comments.jsx',
-        test: './assets/test.coffee'
+        main: path.join(process.cwd(), 'app/js/app.jsx'),
+        comments: path.join(process.cwd(), 'app/js/comments.jsx')
     },
+
+    // Don't use hashes in dev mode for better performance
     output: {
-        path: path.join(__dirname, 'static/js'),
-        filename: '[name].js'
+        filename: '[name].js',
+        chunkFilename: '[name].chunk.js'
     },
-    module: {
-        // preLoaders: [
-        //     {
-        //         test: /\.js$/,
-        //         exclude: /node_modules/,
-        //         loader: 'jshint-loader'
-        //     }
-        // ],
-        loaders: [
-            {
-                test: /.jsx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            },
-            {
-                test: /\.coffee$/,
-                loader: 'coffee-loader'
-            },
-            {
-                test: /\.(coffee\.md|litcoffee)$/,
-                loader: 'coffee-loader?literate'
-            }
-        ]
-    },
-    externals: {
-        jquery: '$',
-        'react-dom': 'ReactDOM',
-        react: 'React'
-    }
-};
+
+    // Load the CSS in a style tag in development
+    cssLoaders: 'style-loader!css-loader?localIdentName=[local]__[path][name]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
+
+    // Process the CSS with PostCSS
+    postcssPlugins: [
+        postcssFocus(), // Add a :focus to every :hover
+        cssnext({ // Allow future CSS features to be used, also auto-prefixes the CSS...
+            browsers: ['last 2 versions', 'IE > 10'] // ...based on this browser list
+        }),
+        postcssReporter({ // Posts messages from plugins to the terminal
+            clearMessages: true
+        })
+    ],
+
+    // Add hot reloading
+    plugins: [
+        new webpack.NoErrorsPlugin()
+    ],
+
+    // Emit a source map for easier debugging
+    devtool: 'inline-source-map'
+});
+
